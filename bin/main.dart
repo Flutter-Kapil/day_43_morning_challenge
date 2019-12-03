@@ -25,17 +25,12 @@ bool verifyCard(int ccNumber) {
   print(reversedCcNumber); // #debug
   int s1 = 0;
   int s2 = 0;
-  //step 1 for s1
   for (int i = 0; i < reversedCcNumber.length; i++) {
     if (i % 2 == 0) {
+      //calculate s2
       s1 = s1 + int.parse(reversedCcNumber[i]);
-    }
-  }
-
-  print(s1); //#debug
-  //step 2 for s2
-  for (int i = 0; i < reversedCcNumber.length; i++) {
-    if (i % 2 != 0) {
+    } else {
+      //calculate s2
       int product = (int.parse(reversedCcNumber[i]) * 2);
       if (product > 9) {
         s2 = s2 + int.parse(product.toString()[1]) + 1;
@@ -44,9 +39,8 @@ bool verifyCard(int ccNumber) {
       }
     }
   }
-  print(s2); // #debug
+  print('s1:$s1 , s2:$s2'); //#debug
   int totalSum = s1 + s2;
-
   return totalSum.toString()[totalSum.toString().length - 1] == '0';
 }
 
